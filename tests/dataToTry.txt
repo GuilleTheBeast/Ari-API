@@ -1,0 +1,2 @@
+[{"documento": "03110567-7","nombres": "Jaime Roberto","apellidos": "Climaco Navarrete","tarjeta": "2346570012456","tipo": "GOLD","telefono": "22779898","poligono": "POLYGON 1"},
+{"documento": "05997550-0","nombres": "Guillermo Daniel","apellidos": "López Henríquez","tarjeta": "1234567890123","tipo": "PLATINUM","telefono": "76976652","poligono": "POLYGON 2"}]

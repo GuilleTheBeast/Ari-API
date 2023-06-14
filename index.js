@@ -36,7 +36,6 @@ app.post("/txt-xml", (req, res) => {
       .json({ error: "La cadena de texto no es un JSON válido" });
   }
 
-  // Convierte el JSON a XML utilizando xml2js
   const builder = new xml2js.Builder();
   const xmlResultado = builder.buildObject(jsonResultado);
 
@@ -49,11 +48,22 @@ app.post("/json-txt", (req, res) => {
   const jsonObject = req.body; // Obtén el objeto JSON del cuerpo de la solicitud
 
   try {
-    const jsonString = JSON.stringify(jsonObject); // Convierte el objeto JSON a cadena de texto
-    res.send(jsonString); // Devuelve la cadena de texto como respuesta
+    const separator = "+"; // Cambia el separador según tus necesidades
+    const jsonString = JSON.stringify(jsonObject, null, separator);
+    //var textFile = new Blob([jsonString], { type: "text/plain" }); Servira para crear descargable
+    res.send(jsonString);
   } catch (error) {
     return res.status(400).json({ error: "El objeto JSON no es válido" });
   }
+
+  // Create a download link or use the FileReader object to save the text file
+  //Logica a agregar en el frontend
+  /*
+var downloadLink = document.createElement('a');
+downloadLink.href = URL.createObjectURL(textFile);
+downloadLink.download = 'data.txt';
+downloadLink.click();
+*/
 });
 
 // Convierte el XML a TXT ----------------------------------------------------------------------------
