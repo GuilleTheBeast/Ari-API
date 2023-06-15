@@ -1,4 +1,5 @@
 const express = require("express");
+//const bodyParser = require('body-parser');
 const app = express();
 const xml2js = require("xml2js");
 
@@ -45,13 +46,14 @@ app.post("/txt-xml", (req, res) => {
 // Convierte el JSON a TXT ----------------------------------------------------------------------------
 
 app.post("/json-txt", (req, res) => {
-  const jsonObject = req.body; // Obtén el objeto JSON del cuerpo de la solicitud
+  const jsonObject = req.body.text; // Obtén el objeto JSON del cuerpo de la solicitud
 
   try {
-    const separator = "+"; // Cambia el separador según tus necesidades
+    const separator = "*"; // Cambia el separador según tus necesidades
     const jsonString = JSON.stringify(jsonObject, null, separator);
     //var textFile = new Blob([jsonString], { type: "text/plain" }); Servira para crear descargable
     res.send(jsonString);
+    //res.send('Succesfully submitted');
   } catch (error) {
     return res.status(400).json({ error: "El objeto JSON no es válido" });
   }
